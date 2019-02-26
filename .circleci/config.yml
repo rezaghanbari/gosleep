@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: golang:1.11
+    working_directory: /go/src/github.com/tianon/gosleep
+    environment:
+      GO111MODULE: 'on'
+    steps:
+      - checkout
+      - run: go install -v ./...
+      - run: gosleep --for 5s
